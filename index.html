@@ -144,7 +144,7 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            padding: 8rem 2rem 4rem;
+            padding: 7rem 2rem 3rem;
         }
 
         .grid-bg {
@@ -315,7 +315,7 @@
 
         /* Section Styles */
         section {
-            padding: 6rem 2rem;
+            padding: 4rem 2rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -459,7 +459,7 @@
             backdrop-filter: blur(20px);
             border: 1px solid var(--card-border);
             border-radius: 20px;
-            padding: 2.5rem;
+            padding: 3rem;
         }
 
         .skill-category h3 {
@@ -521,6 +521,80 @@
             font-size: 4rem;
             position: relative;
             overflow: hidden;
+        }
+
+        .project-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .project-slider img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .project-slider img.active {
+            opacity: 1;
+        }
+
+        /* Slider controls */
+        .slider-controls {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+            z-index: 2;
+        }
+
+        .slider-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .slider-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            background: rgba(0,0,0,0.4);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+
+        .slider-arrow:hover {
+            background: rgba(0,0,0,0.7);
+        }
+
+        .slider-arrow.left {
+            left: 10px;
+        }
+
+        .slider-arrow.right {
+            right: 10px;
         }
 
         .project-header::before {
@@ -838,6 +912,21 @@
     </section>
 
 
+    <!-- About Me Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-subtitle">Who am I?</p>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <p style="color: var(--muted); line-height: 1.9; font-size: 1.05rem;">
+                    I am a Data Analyst with an engineering background, skilled in transforming raw data into actionable insights that support business decisions.
+                    Proficient in data cleaning, analysis, visualization, and reporting using SQL, Power BI, Tableau, Excel, and Python (NumPy, Pandas, Matplotlib, Seaborn, PySpark).
+                    Experienced in building interactive dashboards and delivering clear, concise insights to support data-driven strategies.
+                </p>
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects">
         <h2 class="section-title">Featured Projects</h2>
@@ -847,7 +936,15 @@
             <!-- <CHANGE> Updated projects with real data and correct GitHub links -->
             <div class="project-card">
                 <div class="project-header">
-                    <img src="layoffs.png" alt="Layoffs Analysis Project" style="width:100%; height:100%; object-fit:cover;" />
+                    <div class="project-slider">
+                        <img src="layoffs.png" class="active" alt="Layoffs 1">
+                        <img src="layoffs2.png" alt="Layoffs 2">
+                        <img src="layoffs3.png" alt="Layoffs 3">
+                        <img src="layoffs4.png" alt="Layoffs 4">
+                        <div class="slider-arrow left"><i class="fas fa-chevron-left"></i></div>
+                        <div class="slider-arrow right"><i class="fas fa-chevron-right"></i></div>
+                        <div class="slider-controls"></div>
+                    </div>
                 </div>
                 <div class="project-body">
                     <h3>Layoffs Analysis (SQL + Power BI) </h3>
@@ -870,17 +967,30 @@ End-to-end analysis of global layoffs using SQL & Power BI. Built a full ETL pip
 
             <div class="project-card">
                 <div class="project-header">
-                    <img src="EDA.png" alt="World Population EDA Project" style="width:100%; height:100%; object-fit:cover;" />
+                    <div class="project-slider">
+                        <img src="sales.png" class="active" alt="Sales 1">
+                        <img src="sales2.png" alt="Sales 2">
+                        <img src="sales3.png" alt="Sales 3">
+                        <img src="sales4.png" alt="Sales 4">
+                        <div class="slider-arrow left"><i class="fas fa-chevron-left"></i></div>
+                        <div class="slider-arrow right"><i class="fas fa-chevron-right"></i></div>
+                        <div class="slider-controls"></div>
+                    </div>
                 </div>
                 <div class="project-body">
-                    <h3>World Population EDA (Python)</h3>
-                    <p>Exploratory data analysis of global population trends using Python. Analyzed demographic distributions and population growth patterns across regions with comprehensive visualizations.</p>
+                    <h3>Sales Analysis (Python + Power BI)</h3>
+                    <p>
+Built an end-to-end ETL pipeline using Python (Pandas) and Power Query to clean and integrate 7 datasets (60K+ records). Performed EDA with Seaborn and Matplotlib to identify key business drivers, including the Western Region (30% of volume) and Wholesale Channel (54% of sales). Developed 8+ DAX measures and designed multi-page interactive Power BI dashboards for decision-making.
+                    </p>
                     <div class="project-tech">
                         <span class="tech-badge">Python</span>
                         <span class="tech-badge">Pandas</span>
-                        <span class="tech-badge">Matplotlib</span>
+                        <span class="tech-badge">Power BI</span>
+                        <span class="tech-badge">DAX</span>
+                        <span class="tech-badge">Power Query</span>
+                        <span class="tech-badge">ETL</span>
                     </div>
-                    <a href="https://github.com/mohamed-ali-505/world-population-project" target="_blank" rel="noopener noreferrer" class="project-link">
+                    <a href="https://github.com/mohamed-ali-505/Sales-Analysis" target="_blank" rel="noopener noreferrer" class="project-link">
                         View on GitHub
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -889,7 +999,15 @@ End-to-end analysis of global layoffs using SQL & Power BI. Built a full ETL pip
 
             <div class="project-card">
                 <div class="project-header">
-                    <img src="HR-Analytics.png" alt="HR Analytics Dashboard Project" style="width:100%; height:100%; object-fit:cover;" />
+                    <div class="project-slider">
+                        <img src="HR-Analytics.png" class="active" alt="HR 1">
+                        <img src="HR-Analytics2.png" alt="HR 2">
+                        <img src="HR-Analytics3.png" alt="HR 3">
+                        <img src="HR-Analytics4.png" alt="HR 4">
+                        <div class="slider-arrow left"><i class="fas fa-chevron-left"></i></div>
+                        <div class="slider-arrow right"><i class="fas fa-chevron-right"></i></div>
+                        <div class="slider-controls"></div>
+                    </div>
                 </div>
                 <div class="project-body">
                     <h3>HR Analytics Dashboard (Power BI)</h3>
@@ -1223,6 +1341,47 @@ End-to-end analysis of global layoffs using SQL & Power BI. Built a full ETL pip
             alert('Thank you for your message! I will get back to you soon.');
             document.querySelectorAll('.contact-form input, .contact-form textarea').forEach(input => {
                 input.value = '';
+            });
+        });
+
+        // Manual project sliders (arrows + dots)
+        document.querySelectorAll('.project-slider').forEach(slider => {
+            const images = slider.querySelectorAll('img');
+            const dotsContainer = slider.querySelector('.slider-controls');
+            const prevBtn = slider.querySelector('.slider-arrow.left');
+            const nextBtn = slider.querySelector('.slider-arrow.right');
+
+            let index = 0;
+
+            // Create dots
+            images.forEach((_, i) => {
+                const dot = document.createElement('div');
+                dot.classList.add('slider-dot');
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => showSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            const dots = dotsContainer.querySelectorAll('.slider-dot');
+
+            function showSlide(i) {
+                images[index].classList.remove('active');
+                dots[index].classList.remove('active');
+
+                index = i;
+
+                images[index].classList.add('active');
+                dots[index].classList.add('active');
+            }
+
+            prevBtn.addEventListener('click', () => {
+                const newIndex = (index - 1 + images.length) % images.length;
+                showSlide(newIndex);
+            });
+
+            nextBtn.addEventListener('click', () => {
+                const newIndex = (index + 1) % images.length;
+                showSlide(newIndex);
             });
         });
     </script>
